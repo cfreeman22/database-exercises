@@ -29,15 +29,15 @@ AND to_date > now();
 
 -- Q3 How many people in the employees table are no longer working for the company? Give the answer in a comment in your code.
 
-SSELECT COUNT(*)
+SELECT COUNT(*)
 
 FROM employees 
 
-WHERE emp_no IN (SELECT emp_no 
+WHERE emp_no NOT IN (SELECT emp_no 
 
 FROM dept_emp
 
-WHERE to_date < now());
+WHERE to_date > now());
 
 --Q4 Find all the current department managers that are female. List their names in a comment in your code.
 
@@ -98,3 +98,6 @@ WHERE to_date > now()
 ) * 100;
 
 -- the percentage is 0.0346 %
+
+
+
