@@ -1,10 +1,10 @@
 -- Using the example from the lesson, create a temporary table called employees_with_departments that contains first_name, last_name, and dept_name for employees currently with that department. 
 
 -- 1 
-CREATE TEMPORARY TABLE  hopper_1553.employees_with_departments AS
+CREATE TEMPORARY TABLE  hopper_1553.employees_with_departments AS (
 SELECT first_name, last_name, dept_no
 from employees
-join dept_emp using(emp_no);
+join dept_emp using(emp_no));
 
 use hopper_1553;
 
@@ -43,7 +43,8 @@ CREATE TEMPORARY TABLE hopper_1553.amount_as_integer_values AS
 SELECT TRUNCATE((amount * 100),0) AS 'Amount in Cents'
 FROM payment;
   
-
+  -- Instructor's answer 
+  -- use alter to alter the table and add a column cent and set cents to column(amount *100)
  -- Q3
 
  use employees;
@@ -88,6 +89,26 @@ FROM salaries);
 UPDATE hopper_1553.comparing_salaries
 SET z_score = (current_avg - historic_avg)/ std;
 
+-- Partial Instructor's answers
+
+-- Find average historic salary
+
+use employees;
+
+SELECT round(avg(salary)) from salaries;
+
+-- Find average historic salary
+
+SELECT ROUND(stddev(salary)) FROM salaries;
+
+-- Find current average pay by department
+
+SELECT dept_name, round(av(salary))
+FROM departments
+JOIN dept_emp USING(dept_no)
+JOIN salaries USING(emp_no)
+WHERE salaries.to_date > now() AND dept_emp.to_date >now()
+GROUP BY dept_name;
 
 
 
