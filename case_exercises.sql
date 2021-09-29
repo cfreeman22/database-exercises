@@ -38,7 +38,7 @@ group by birth_date;
 -- Now we will use the result to build our case by aliassing the first relect query in our case
 
 
-SELECT   SUM(*) AS num_of_employees,
+SELECT   SUM(num_of_employees_per_birthyear) AS num_of_employees,
    CASE 
         WHEN birth_date LIKE '195%' THEN 'Born in the 1950s'
           WHEN birth_date LIKE'196%' THEN 'Born in the 1960s'
