@@ -51,7 +51,8 @@ FROM (select birth_date,  count(*) as num_of_employees_per_birthyear  FROM emplo
 GROUP BY birth_decade;
     
 
- 
+ -- 2891 employees wereborn in the 1950's
+ -- and 1859 employees were born in the 1960's
 
 
 
